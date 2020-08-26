@@ -141,4 +141,15 @@ class BaseModel
 		$stmt = $this->db->query($sql);
 		return $stmt->fetchAll();
 	}
+	
+			public function getByName($name)
+		{
+			$sql = sprintf('SELECT * FROM %s WHERE hotelName = :name', 'hotelsheader');
+		$stmt = $this->db->prepare($sql);
+		$stmt->execute([
+			'name' => $name
+		]);
+				return $stmt->fetch();
+
+		}
 }

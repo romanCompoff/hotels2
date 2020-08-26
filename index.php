@@ -17,18 +17,21 @@ $uriParts = array_values($uriParts);
 
 $controller = new BaseController;
 
-$prev = $controller->allPrev();
-$config = $controller->allConfigs();
-$fb = $controller->allFeedbacks();
 
-if($uriParts[0]){
-	$oneHotel = $controller->getOne($name);
+
+// if($uriParts[0]){
+	$oneHotel = $controller->getOne(uriParts[0]);
 	
 	// $mainArticles = $controller->allArticles('articles');
 	// $main = $controller->allHotels('allHotels');
 	
 	var_dump($oneHotel);
-}
+// }
+
+// $prev = $controller->allPrev();
+// $config = $controller->allConfigs();
+// $fb = $controller->allFeedbacks();
+
 
 // $contr = new PrevController;
 

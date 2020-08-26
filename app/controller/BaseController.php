@@ -83,12 +83,13 @@ class BaseController
 	
 	 		public function getOne($name)
 	{
-		$mPost = new PrevModel(DB::getConnect());
-		$OneArticle = $mPost->getByName($name);
+		$mPost = new BaseModel(DB::getConnect());
+		$OneArticle = $mPost->getByName('nazvanie-otelya');
+		
 		$hotelList = $mPost->getHotels();
-		$this->content = $this->build($this->myPath($page), ['content' => $hotelList]);	
+		$this->content = $this->build($this->myPath('allHotels'), ['content' => $hotelList]);	
 		$articlesList = $mPost->getArticles();
-		$this->articles = $this->build($this->myPath($page), ['content' => $articlesList]);	
+		$this->articles = $this->build($this->myPath('articles'), ['content' => $articlesList]);	
 		return $OneArticle;
 	}
 
