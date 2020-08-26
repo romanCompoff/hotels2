@@ -2,7 +2,7 @@
 
   <?php foreach($feed as $f):?>
   
-  <div class="card" style = "height:650px;">
+  <div class="card" style = "height:450px;">
   <div class="text-center px-5">
     <img class="card-img-top py-5" src="/img/img-feedbacks/<?=$f['id'];?>.jpg" alt="Качество обслуживания" style = "width:100%;">
     </div>

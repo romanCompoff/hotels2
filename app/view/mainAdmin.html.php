@@ -73,6 +73,9 @@
 			<?=$err?>
 			<?=$content?>
 			<?=$articles?>
+			<h3>Отзывы</h3>
+			<?=$fb?>
+
 		</div>
 </div>
 <div class = "row">

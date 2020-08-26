@@ -25,7 +25,8 @@ class AdminController Extends BaseController
 			[
 			'err' => $this->err,
 			'content' => $this->content,
-			'articles' => $this->articles
+			'articles' => $this->articles,
+			'fb' => $this->fb
 			]);
 		}
 
@@ -60,12 +61,35 @@ class AdminController Extends BaseController
 			$mPost = new baseModel(DB::getConnect());
 			$mPost->deleteArticle($id);
 	}
-	
+
+			public function delFB($id)
+	{
+			
+			$mPost = new baseModel(DB::getConnect());
+			$mPost->deleteFB($id);
+			$this->removeImg($id, 'img-feedbacks');
+	}	
+
+			protected function removeImg($name, $dir)
+			{
+				if(file_exists( $_SERVER['DOCUMENT_ROOT'] . sprintf('/img/%s/%s.jpg', $dir, $name))){
+					unlink($_SERVER['DOCUMENT_ROOT'] . sprintf('/img/%s/%s.jpg', $dir, $name));
+				}
+				// else{
+					// echo  $_SERVER['DOCUMENT_ROOT'] . sprintf('/img/%s/%s.jpg', $dir, $name);
+				// }
+			}
 			public function chk($word)
 	{
 			$word = htmlspecialchars($word);
 			return $word;
 	}
+
+			public function fUpdate($old, $new, $dir)
+		{
+			$new = $_SERVER['DOCUMENT_ROOT'] . sprintf('/img/%s/%s.jpg', $dir, $new);
+			move_uploaded_file($old, $new);
+		}
 
 
 }

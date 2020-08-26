@@ -66,11 +66,30 @@ class BaseController
 		$this->configs = $mPost->getConfigs();
 	}
 		
-		public function allFeedbacks()
+		public function allFeedbacks($p = 'feedBackViews/feedBack')
 	{
 		$mPost = new BaseModel(DB::getConnect());
 		$FBList = $mPost->getFB();
-		$this->fb = $this->build($this->myPath('feedBackViews/feedBack'), ['feed' => $FBList]);	
+		$this->fb = $this->build($this->myPath($p), ['feed' => $FBList]);	
+	}
+
+		public function allPrev()
+	{
+		$mPost = new BaseModel(DB::getConnect());
+		$prevList = $mPost->getPrev();
+		$this->content = $this->build($this->myPath('prevView/allPrev'), ['content' => $prevList]);
+
+	}
+	
+	 		public function getOne($name)
+	{
+		$mPost = new PrevModel(DB::getConnect());
+		$OneArticle = $mPost->getByName($name);
+		$hotelList = $mPost->getHotels();
+		$this->content = $this->build($this->myPath($page), ['content' => $hotelList]);	
+		$articlesList = $mPost->getArticles();
+		$this->articles = $this->build($this->myPath($page), ['content' => $articlesList]);	
+		return $OneArticle;
 	}
 
 }

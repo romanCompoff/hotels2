@@ -13,7 +13,7 @@ $c = $controller->addFeedback($_POST['fbc'], $_POST['userNname']);
 
 $f  = $_FILES['pic']['tmp_name'];
 
-$controller->fUpdate($f, $c);
+$controller->fUpdate($f, $c, 'img-feedbacks');
 
 }
 

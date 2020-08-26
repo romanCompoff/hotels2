@@ -32,8 +32,13 @@ if($_GET['admin'] == 'list'){
 	if($_GET['del']){
 	$controller->delHotel($_GET['del']);
 	}
+	elseif($_GET['delfb']){
+	$controller->delFB($_GET['delfb']);
+	}
 	$list = $controller->allHotels('adminList');
 	$mainArticles = $controller->allArticles('adminArticleList');
+	$feedbacks = $controller->allFeedbacks('feedBackViews/FBAdmin');
+
 
 }
 else{

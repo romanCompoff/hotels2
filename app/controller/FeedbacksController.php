@@ -15,11 +15,7 @@ class FeedbacksController Extends AdminController
 
 		}
 		
-		public function fUpdate($old, $new)
-		{
-			$new = $_SERVER['DOCUMENT_ROOT'] . sprintf('/img/img-feedbacks/%s.jpg', $new);
-			move_uploaded_file($old, $new);
-		}
+
 
 		public function outputForm()
 		{

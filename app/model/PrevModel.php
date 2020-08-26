@@ -7,6 +7,7 @@ class PrevModel Extends BaseModel
 {
 	protected $table = 'hotelsheader';
 	
+
 	
 	public function addPrev($enName, $post)
 	{	
@@ -22,7 +23,6 @@ class PrevModel Extends BaseModel
 						'rusName' => $post['rusName'],
 						'content' => $post['content']
 		]);
-				var_dump($post);
 
 			return false;
 		}
@@ -41,6 +41,26 @@ class PrevModel Extends BaseModel
 		}
 		return false;
 	}
+	
+	
+		public function deletePrev($name)
+		{
+			$sql = sprintf('DELETE FROM %s WHERE hotelName = :name', $this->table);
+			$stmt = $this->db->prepare($sql);
+			$stmt->execute([
+			'name' => $name
+		]);
+
+		}
+		
+		public function getByName($name)
+		{
+			$sql = sprintf('SELECT * FROM %s WHERE hotelName = :name', $this->table);
+		$stmt = $this->db->prepare($sql);
+		$stmt->execute([
+			'name' => $name
+		]);
+		}
 		
 	// public function editConfigs($siteName, $menu1)
 	// {

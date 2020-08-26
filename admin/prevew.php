@@ -7,19 +7,26 @@ include '../vendor/autoload.php';
 
 $controller = new PrevController;
 
-if(!empty($_POST)){
+	if($_GET['del']){
+		$controller->delPrev($_GET['del']);
+	}
 	
-$enName = Core::translitSef($_POST['rusName']);
+	if(!empty($_POST)){
+	
+		$enName = Core::translitSef($_POST['rusName']);
 
-$c = $controller->addPrev($enName, $_POST);
+		$c = $controller->addPrev($enName, $_POST);
+	
+		if(!$c){
 
-// $f  = $_FILES['pic']['tmp_name'];
+			$f  = $_FILES['pic']['tmp_name'];
 
-// $controller->fUpdate($f, $c);
-
+			$controller->fUpdate($f, $enName, 'img-preview');
+		}
 }
 
 
+$controller->getAll();
 
 $main = $controller->outputForm();
 $controller->render();
