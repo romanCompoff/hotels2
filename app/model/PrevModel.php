@@ -12,17 +12,20 @@ class PrevModel Extends BaseModel
 	{	
 		$uName = $this->isUniqName($enName, 'hotelName');
 		if($uName){
-			echo 'Совпадение';
+			return '<div class="alert alert-danger" role="alert">Такое название уже существует</div>';
 		}
 		else{
-			echo 'Нет';
+		
+		$sql = sprintf("INSERT INTO %s (hotelName, rusName, content) VALUES (:hotelName, :rusName, :content)", $this->table);
+		$stmt = $this->db->prepare($sql);
+		$stmt->execute(['hotelName' => $enName,
+						'rusName' => $post['rusName'],
+						'content' => $post['content']
+		]);
+				var_dump($post);
+
+			return false;
 		}
-		// $sql = sprintf("INSERT INTO %s (text, userName) VALUES (:text, :userName)", $this->table);
-		// $stmt = $this->db->prepare($sql);
-		// $stmt->execute(['text' => $text,
-						// 'userName' => $userName
-		// ]);
-		// return $this->db->lastInsertId();
 	}
 	
 	private function isUniqName($uName, $col)
@@ -32,10 +35,6 @@ class PrevModel Extends BaseModel
 		$res = $stmt->fetchAll();
 		
 		foreach($res as $data){
-			echo $data[$col];
-			echo '<br>';
-			echo $uName;
-			echo '<br>';
 			if($data[$col] == $uName){
 				return true;
 			}

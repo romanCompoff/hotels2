@@ -9,13 +9,15 @@ class PrevController Extends AdminController
 	public function addPrev($enName, $post)
 	{
 		$mPost = new PrevModel(DB::getConnect());
-		$mPost->addPrev($enName, $post);
+		$resUniq = $mPost->addPrev($enName, $post);
+		$this->err = $resUniq;
+
 	}
 	
 			public function outputForm()
 		{
 
-			$this->content = $this->build($this->myPath('prevView/addPrevView'), []);
+			$this->content = $this->build($this->myPath('prevView/addPrevView'), [$err => $this->err]);
 		}
 		
 		

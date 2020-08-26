@@ -6,6 +6,8 @@ use Dva\Hotels\Core\DB;
 
 class AdminController Extends BaseController
 {
+	var $err;
+	
 			public function outputForm()
 		{
 			$this->content = $this->build($this->myPath('admin'), []);
@@ -21,6 +23,7 @@ class AdminController Extends BaseController
 			echo $this->build(
 			$this->myPath('mainAdmin'),
 			[
+			'err' => $this->err,
 			'content' => $this->content,
 			'articles' => $this->articles
 			]);
