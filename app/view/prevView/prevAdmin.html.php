@@ -6,7 +6,7 @@ foreach($prev as $p){
 
 $imgPathEnd = '" style = "width: 33px; height: 33px;">';
 	echo '<tr><td>';
-	echo sprintf('<img class="card-img-top py-5" src="/img/img-preview/%s.jpg" >', $p['id']);
+	echo sprintf('<img class="card-img-top py-5" src="/img/img-preview/%s.jpg" >', $p['hotelName']);
 	echo '</td><td>';
 	echo $p['hotelName'];
 	echo '</td><td>';
