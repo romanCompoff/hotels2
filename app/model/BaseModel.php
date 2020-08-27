@@ -149,6 +149,7 @@ class BaseModel
 		$stmt->execute([
 			'name' => $name
 		]);
+		var_dump($name);
 				return $stmt->fetch();
 
 		}

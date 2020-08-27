@@ -19,18 +19,18 @@ $controller = new BaseController;
 
 
 
-// if($uriParts[0]){
-	$oneHotel = $controller->getOne(uriParts[0]);
+if($uriParts[0]){
+	$oneHotel = $controller->getOne($uriParts[0]);
 	
 	// $mainArticles = $controller->allArticles('articles');
 	// $main = $controller->allHotels('allHotels');
 	
 	var_dump($oneHotel);
-// }
+}
 
-// $prev = $controller->allPrev();
-// $config = $controller->allConfigs();
-// $fb = $controller->allFeedbacks();
+$prev = $controller->allPrev();
+$config = $controller->allConfigs();
+$fb = $controller->allFeedbacks();
 
 
 // $contr = new PrevController;
