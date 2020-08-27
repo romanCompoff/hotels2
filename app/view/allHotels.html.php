@@ -1,4 +1,5 @@
 <?
+if(is_array($content)){
 foreach($content as $hotel){
 	echo '<div class = "container py-5" >';
 	echo '<div class = "row justify-content-md-center justify-content-lg-center justify-content-center myrow">';
@@ -49,6 +50,10 @@ echo	'
 	
 		
 
+}
+}
+else{
+	echo '<h3>No data</h3>';
 }
 ?>
 

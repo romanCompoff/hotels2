@@ -4,8 +4,14 @@
 <div>
 <h1>Добавление нового блока</h1>
 </div>
-
-
+<select name = "hotel" required>
+<?php
+foreach($content as $c){
+echo sprintf('<option value = "%s">%s</option>', $c['hotelName'], $c['rusName']);
+}
+?>
+</select>
+<span style = "color:red">Обязательно!!!</span><br>
 <textarea id = "preview" onChange = "showMess('preview' , '900', 'строка')" type="text" name = "preview">Описание</textarea><br> 
 	<div id = "previewDiv">
 	</div>
@@ -86,7 +92,8 @@ function showMess(element, howLong, t)
 }
 </script>
 <style>
-form input{
+form input,
+form select{
 	margin:12px;
 }
 form textarea{

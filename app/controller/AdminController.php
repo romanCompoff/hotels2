@@ -10,12 +10,16 @@ class AdminController Extends BaseController
 	
 			public function outputForm()
 		{
-			$this->content = $this->build($this->myPath('admin'), []);
+			$mPost = new BaseModel(DB::getConnect());
+			$prevList = $mPost->getPrev();
+			$this->content = $this->build($this->myPath('admin'), ['content' => $prevList]);
 		}
 		
 		public function outputFormToArticles()
 		{
-			$this->content = $this->build($this->myPath('adminArticles'), []);
+			$mPost = new BaseModel(DB::getConnect());
+			$prevList = $mPost->getPrev();
+			$this->content = $this->build($this->myPath('adminArticles'), ['content' => $prevList]);
 		}
 		
 			public function render()
@@ -35,8 +39,9 @@ class AdminController Extends BaseController
 	
 		$mPost = new BaseModel(DB::getConnect());
 		$lastId = $mPost->addPost(	$this->chk($post['heading']),
-									$this->chk($post['price']), 
-									$this->chk($post['preview']));
+									$this->chk($post['price']),  
+									$this->chk($post['preview']),
+									$this->chk($post['hotel']));
 		return $lastId;
 	}
 	

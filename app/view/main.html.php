@@ -1,6 +1,3 @@
-<html>
-
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -22,7 +19,7 @@
 	<meta name="yandex-verification" content="0b16e7b808a41d8b" />
 
   </head>
-  
+
 <body>
 	<div class = "container-fluid " style = "padding-right: 0px; padding-left: 0px;">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -170,10 +167,11 @@
     </div>
   </div>
 </div>
-
+<div class="container">
 <div class = "text-center">
 <h2 id = "numbers"><?=$configs['heading2']?></h2>
 <p><span style="font-size:16px"><?=$configs['words2']?></span></p>
+</div>
 </div>
 <!--
 Контент сайта

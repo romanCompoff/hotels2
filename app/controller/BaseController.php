@@ -46,17 +46,17 @@ class BaseController
 	{
 		$this->myNotice = $this->build(__DIR__ . '/../views/myNotice.html.php', ['myNotice' => $myNotice]);	
 	}
-			public function allHotels($page)
+			public function allHotels($page, $hotelWhere)
 	{
 		$mPost = new BaseModel(DB::getConnect());
-		$hotelList = $mPost->getHotels();
+		$hotelList = $mPost->getHotels($hotelWhere);
 		$this->content = $this->build($this->myPath($page), ['content' => $hotelList]);	
 	}
 			
-			public function allArticles($page)
+			public function allArticles($page, $hotelWhere)
 	{
 		$mPost = new BaseModel(DB::getConnect());
-		$articlesList = $mPost->getArticles();
+		$articlesList = $mPost->getArticles($hotelWhere);
 		$this->articles = $this->build($this->myPath($page), ['content' => $articlesList]);	
 	}
 			
@@ -85,6 +85,15 @@ class BaseController
 	{
 		$mPost = new BaseModel(DB::getConnect());
 		$OneArticle = $mPost->getByName($name);
+		$mPost = new BaseModel(DB::getConnect());
+		$this->configs = $mPost->getConfigs();
+		$this->configs['heading1'] = $OneArticle['rusName'];
+		$this->configs['heading2'] = '';
+		$this->configs['words2'] = '';
+		$this->configs['words1'] = $OneArticle['content'];
+
+		
+		
 		
 		// $hotelList = $mPost->getHotels();
 		// $this->content = $this->build($this->myPath('allHotels'), ['content' => $hotelList]);	

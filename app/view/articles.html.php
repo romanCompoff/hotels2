@@ -1,4 +1,5 @@
 <?
+if(is_array($content)){
 foreach($content as $hotel){
 
 
@@ -17,4 +18,7 @@ echo '
 
 }
 
-		
+}
+else{
+	echo '<h3>No data</h3>';
+}	

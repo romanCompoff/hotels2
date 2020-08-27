@@ -19,18 +19,26 @@ $controller = new BaseController;
 
 
 
+$fb = $controller->allFeedbacks();
+if(strpos($uriParts[0], 'admin.php')){
+		include_once 'admin.php';
+		die;
+	}
 if($uriParts[0]){
 	$oneHotel = $controller->getOne($uriParts[0]);
 	
-	// $mainArticles = $controller->allArticles('articles');
-	// $main = $controller->allHotels('allHotels');
+	$mainArticles = $controller->allArticles('articles', $oneHotel['hotelName']);
+	$main = $controller->allHotels('allHotels', $oneHotel['hotelName']);
+
 	
-	var_dump($oneHotel);
+	// var_dump($oneHotel);
+}
+else{
+$config = $controller->allConfigs();
+$prev = $controller->allPrev();
 }
 
-$prev = $controller->allPrev();
-$config = $controller->allConfigs();
-$fb = $controller->allFeedbacks();
+
 
 
 // $contr = new PrevController;

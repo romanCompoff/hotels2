@@ -22,18 +22,19 @@ class BaseModel
 		return $stmt->fetch();
 	}
 	
-		function getHotels()
+		function getHotels($hotelWhere)
 	{
 		// $this->db->setAttribute($this->db::ATTR_DEFAULT_FETCH_MODE,$this->db::FETCH_NUM);
-		$sql = sprintf('SELECT * FROM %s', $this->table);
+		$sql = sprintf('SELECT * FROM %s WHERE prevHotel = "%s"', $this->table, $hotelWhere);
 		$stmt = $this->db->query($sql);
+		
 		return $stmt->fetchAll();
 	}
 			
-			function getArticles()
+			function getArticles($hotelWhere)
 	{
 		// $this->db->setAttribute($this->db::ATTR_DEFAULT_FETCH_MODE,$this->db::FETCH_NUM);
-		$sql = sprintf('SELECT * FROM %s', 'articles');
+		$sql = sprintf('SELECT * FROM %s WHERE prevHotel = "%s"', 'articles', $hotelWhere);
 		$stmt = $this->db->query($sql);
 		return $stmt->fetchAll();
 	}
@@ -61,14 +62,15 @@ class BaseModel
 		$this->RDir($path);
 		}
 			
-		public function addPost($heading, $price, $preview)
+		public function addPost($heading, $price, $preview, $hotelWhere)
 	{	
-			$sql = sprintf("INSERT INTO %s (heading, price, preview) VALUES (:heading, :price, :preview)", $this->table);
+			$sql = sprintf("INSERT INTO %s (heading, price, preview, prevHotel) VALUES (:heading, :price, :preview, :hotelWhere)", $this->table);
 			$stmt = $this->db->prepare($sql);
 			$stmt->execute([
 			'heading' => $heading,
 			'price' => $price,
-			'preview' => $preview
+			'preview' => $preview,
+			'hotelWhere' => $hotelWhere
 			]);
 			return $this->db->lastInsertId();
 		}
@@ -149,7 +151,7 @@ class BaseModel
 		$stmt->execute([
 			'name' => $name
 		]);
-		var_dump($name);
+		// var_dump($name);
 				return $stmt->fetch();
 
 		}

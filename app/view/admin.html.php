@@ -4,7 +4,14 @@
 <div>
 <h1>Добавление нового отеля</h1>
 </div>
-
+<select name = "hotel" required>
+<?php
+foreach($content as $c){
+echo sprintf('<option value = "%s">%s</option>', $c['hotelName'], $c['rusName']);
+}
+?>
+</select>
+<span style = "color:red">Обязательно!!!</span><br>
 <input id = "heading" onChange = "showMess('heading' , '400', 'строка')" type="text" name = "heading">Заголовок<br>
 	<div id = "headingDiv">
 	</div>
@@ -96,6 +103,9 @@ function showMess(element, howLong, t)
 </script>
 <style>
 form input{
+	margin:12px;
+}
+form select{
 	margin:12px;
 }
 form textarea{
