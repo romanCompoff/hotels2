@@ -3,7 +3,7 @@ session_start();
 use Dva\Hotels\controller\AdminController;
 use Dva\Hotels\model\BaseModel;
 
-include 'vendor/autoload.php';
+include '../vendor/autoload.php';
 	
 	
 	function isAuth(){
@@ -35,9 +35,9 @@ if($_GET['admin'] == 'list'){
 	if($_GET['delfb']){
 	$controller->delFB($_GET['delfb']);
 	}
-	$list = $controller->allHotels('adminList');
-	$mainArticles = $controller->allArticles('adminArticleList');
-	$feedbacks = $controller->allFeedbacks('feedBackViews/FBAdmin');
+	$list = $controller->allHotels('adminList', '');
+	$mainArticles = $controller->allArticles('adminArticleList', '');
+	$feedbacks = $controller->allFeedbacks('feedBackViews/FBAdmin', '');
 
 }
 else{

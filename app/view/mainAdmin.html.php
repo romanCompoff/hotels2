@@ -40,8 +40,8 @@
 							</a>
 							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 								<a class="dropdown-item" href="/admin/prevew.php">Добавление отеля</a>
-								<a class="dropdown-item" href="/admin/admin.php">Добавление верхнего блока</a>
-								<a class="dropdown-item" href="/admin/adminArticle.php">Добавление нижнего блока</a>
+								<a class="dropdown-item" href="/admin/admin.php">Добавление нижнего блока</a>
+								<a class="dropdown-item" href="/admin/adminArticle.php">Добавление верхнего блока</a>
 								<a class="dropdown-item" href="/admin/adminConfig.php">Конфигурации</a>
 								<div class="dropdown-divider">
 								</div>

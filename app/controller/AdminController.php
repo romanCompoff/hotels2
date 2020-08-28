@@ -49,7 +49,8 @@ class AdminController Extends BaseController
 	{
 		
 		$mPost = new BaseModel(DB::getConnect());
-		$lastId = $mPost->addArticle($this->chk($post['preview']));
+		$lastId = $mPost->addArticle($this->chk($post['preview']), $this->chk($post['hotel']));
+					// var_dump($post);
 		return $lastId;
 	}
 	

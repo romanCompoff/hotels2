@@ -44,7 +44,7 @@ if(!empty($_POST)){
 		$_POST[$l] = $f['name'];
 	}
 	$res = $controller->addArticles($_POST);	
-	$dir = 'myFiles/articles/' . $res . '/';
+	$dir = '../myFiles/articles/' . $res . '/';
 		if(!is_dir($dir)) {
 			 mkdir($dir, 0777, true);
 		 }

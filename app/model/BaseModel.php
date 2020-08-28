@@ -76,15 +76,17 @@ class BaseModel
 		}
 		
 		
-		public function addArticle( $preview)
+		public function addArticle($preview, $prevHotel)
 		{	
 		
-			$sql = sprintf("INSERT INTO %s (preview) VALUES (:preview)", 'articles');
+			$sql = sprintf("INSERT INTO %s (preview, prevHotel) VALUES (:preview, :prevHotel)", 'articles');
 			$stmt = $this->db->prepare($sql);
 			$stmt->execute([
 			'preview' => $preview,
+			'prevHotel' => $prevHotel
 		
 			]);
+
 			return $this->db->lastInsertId();
 		}
 		protected function RDir($path){

@@ -50,6 +50,7 @@ class BaseController
 	{
 		$mPost = new BaseModel(DB::getConnect());
 		$hotelList = $mPost->getHotels($hotelWhere);
+		
 		$this->content = $this->build($this->myPath($page), ['content' => $hotelList]);	
 	}
 			
