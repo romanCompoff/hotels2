@@ -12,7 +12,7 @@ $imgPathEnd = '" style = "width: 33px; height: 33px;">';
 	echo '</td><td>';
 	echo $f['text'];
 	echo '</td><td>';
-	echo '<a href = "admin.php?admin=list&delfb=';
+	echo '<a href = "feedBacks.php?admin=list&delfb=';
 	echo $f['id'];
 	echo '">Удалить</a>';
 	echo '</td></tr>';

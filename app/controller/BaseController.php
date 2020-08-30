@@ -10,6 +10,7 @@ class BaseController
 	protected $articles;
 	protected $configs;
 	protected $fb;
+	protected $banner = "/img/banner.jpg";
 	protected $content = "Контент в контроллере";
 
 		protected function myPath($name)
@@ -27,6 +28,7 @@ class BaseController
 		'content' => $this->content,
 		'articles' => $this->articles,
 		'configs' => $this->configs,
+		'banner' => $this->banner,
 		'fb' => $this->fb
 		]
 		);
@@ -74,12 +76,16 @@ class BaseController
 		$this->fb = $this->build($this->myPath($p), ['feed' => $FBList]);	
 	}
 
-		public function allPrev()
+		public function allPrev($admin = false)
 	{
 		$mPost = new BaseModel(DB::getConnect());
 		$prevList = $mPost->getPrev();
+		if($admin==true){
+			return $prevList;
+		}
+		else{
 		$this->content = $this->build($this->myPath('prevView/allPrev'), ['content' => $prevList]);
-
+		}
 	}
 	
 	 		public function getOne($name)
@@ -88,10 +94,11 @@ class BaseController
 		$OneArticle = $mPost->getByName($name);
 		$mPost = new BaseModel(DB::getConnect());
 		$this->configs = $mPost->getConfigs();
-		$this->configs['heading1'] = $OneArticle['rusName'];
-		$this->configs['heading2'] = '';
-		$this->configs['words2'] = '';
-		$this->configs['words1'] = $OneArticle['content'];
+		$this->configs['heading1'] = $this->configs['heading2'] = $OneArticle['rusName'];
+		// $this->configs['heading2'] = '';
+		// $this->configs['words2'] = '';
+		$this->configs['words1'] = $this->configs['words2'] = $OneArticle['content'];
+		$this->banner = sprintf("/img/img-preview/%s.jpg",$OneArticle['hotelName']);
 
 		
 		

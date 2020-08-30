@@ -27,13 +27,19 @@ include '../vendor/autoload.php';
 	}
 		
 $controller = new AdminController;
+$prev = $controller->allPrev(true);
+$controller->buttons($prev);
 
 if($_GET['admin'] == 'list'){
 	if($_GET['del']){
 	$controller->delArticle($_GET['del']);
 	}
-	$list = $controller->allHotels('adminList');
-	$mainArticles = $controller->allArticles('adminArticleList');
+	
+	if($_GET['hotel']){
+		
+	$list = $controller->allHotels('adminList', $_GET['hotel']);
+	$mainArticles = $controller->allArticles('adminArticleList', $_GET['hotel']);
+	}
 }
 else{
 if(!empty($_POST)){
@@ -60,6 +66,7 @@ if(!empty($_POST)){
 
 
 }
+$mainArticles = $controller->allArticles('adminArticleList', '');
 $main = $controller->outputFormToArticles();
 }
 

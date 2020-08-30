@@ -27,17 +27,21 @@ include '../vendor/autoload.php';
 	}
 		
 $controller = new AdminController;
+$prev = $controller->allPrev(true);
+$controller->buttons($prev);
 
 if($_GET['admin'] == 'list'){
 	if($_GET['del']){
 	$controller->delHotel($_GET['del']);
 	}
-	if($_GET['delfb']){
-	$controller->delFB($_GET['delfb']);
+
+	if($_GET['hotel']){
+	
+	$list = $controller->allHotels('adminList', $_GET['hotel']);
+	$mainArticles = $controller->allArticles('adminArticleList', $_GET['hotel']);
+	
 	}
-	$list = $controller->allHotels('adminList', '');
-	$mainArticles = $controller->allArticles('adminArticleList', '');
-	$feedbacks = $controller->allFeedbacks('feedBackViews/FBAdmin', '');
+	
 
 }
 else{
@@ -49,7 +53,7 @@ if(!empty($_POST)){
 		$_POST[$l] = $f['name'];
 	}
 	$res = $controller->addHotels($_POST);	
-	$dir = 'myFiles/numbers/' . $res . '/';
+	$dir = '../myFiles/numbers/' . $res . '/';
 		if(!is_dir($dir)) {
 			 mkdir($dir, 0777, true);
 		 }

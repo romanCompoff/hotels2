@@ -15,11 +15,16 @@ class AdminController Extends BaseController
 			$this->content = $this->build($this->myPath('admin'), ['content' => $prevList]);
 		}
 		
-		public function outputFormToArticles()
+			public function outputFormToArticles()
 		{
 			$mPost = new BaseModel(DB::getConnect());
 			$prevList = $mPost->getPrev();
 			$this->content = $this->build($this->myPath('adminArticles'), ['content' => $prevList]);
+		}
+		
+			public function buttons($b)
+		{
+			$this->content = $this->build($this->myPath('admin/buttons'), ['content' => $b]);
 		}
 		
 			public function render()

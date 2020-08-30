@@ -34,7 +34,7 @@
 	<div id = "words1Div">
 	</div>
 	
-<input id = "heading2" onChange = "showMess('heading2' , '1000', 'строка')" type="text" name="heading2" value = "<?=$content[9]?>">Заголовок 2<br>
+<input id = "heading2" onChange = "showMess('heading2' , '1000', 'строка')" type="text" name="heading2" value = "<?=$content[9]?>">Title - заголовок для поисковиков<br>
 	<div id = "heading2Div">
 	</div>
 	

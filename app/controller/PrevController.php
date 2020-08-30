@@ -1,7 +1,7 @@
 <?php
 namespace Dva\Hotels\Controller;
 
-use Dva\Hotels\Model\PrevModel;
+use Dva\Hotels\model\PrevModel;
 use Dva\Hotels\core\DB;
 
 class PrevController Extends AdminController

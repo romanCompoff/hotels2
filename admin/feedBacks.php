@@ -7,17 +7,24 @@ include '../vendor/autoload.php';
 
 $controller = new FeedbacksController;
 
+if($_GET['delfb']){
+
+	$controller->delFB($_GET['delfb']);
+
+}
+
 if(!empty($_POST)){
 
-$c = $controller->addFeedback($_POST['fbc'], $_POST['userNname']);
+	$c = $controller->addFeedback($_POST['fbc'], $_POST['userNname']);
 
-$f  = $_FILES['pic']['tmp_name'];
+	$f  = $_FILES['pic']['tmp_name'];
 
-$controller->fUpdate($f, $c, 'img-feedbacks');
+	$controller->fUpdate($f, $c, 'img-feedbacks');
 
 }
 
 $main = $controller->outputForm();
+$feedbacks = $controller->allFeedbacks('feedBackViews/FBAdmin', '');
 $controller->render();
 
 // var_dump($c);

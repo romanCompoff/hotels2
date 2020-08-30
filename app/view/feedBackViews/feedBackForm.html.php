@@ -13,8 +13,6 @@
 input{
 	margin: 33px;
 }
-form{
-	text-align:left;
-}
+
 
 </style>
